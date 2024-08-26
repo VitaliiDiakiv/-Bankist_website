@@ -29,61 +29,23 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
 
-console.log(document.documentElement);
-console.log(document.head);
-console.log(document.body);
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
 
-const header = document.querySelector('.header');
-const allSection = document.querySelectorAll('.section');
-console.log(allSection);
+btnScrollTo.addEventListener('click', function (e) {
+  const s1coords = section1.getBoundingClientRect();
+  //Scrolling
+  // window.scrollTo(
+  //   s1coords.left + window.pageXOffset,
+  //   s1coords.top + window.pageYOffset
+  // );
 
-document.getElementById('section--1');
-const allButtons = document.getElementsByTagName('button');
-console.log(allButtons);
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   top: s1coords.top + window.pageYOffset,
+  //   behavior: 'smooth',
+  // });
 
-console.log(document.getElementsByClassName('btn'));
-
-//Creating and inserting elements
-const message = document.createElement('div');
-message.classList.add('cookie-message');
-message.textContent =
-  'We used cookies for improved functionality and analitics!';
-message.innerHTML =
-  'We used cookies for improved functionality and analitics! <button class="btn btn--close-cookie">Got it!</button>';
-
-// header.prepend(message);
-header.append(message);
-// header.append(message.cloneNode(true));
-// header.before(message);
-header.after(message);
-
-// delete
-
-document
-  .querySelector('.btn--close-cookie')
-  .addEventListener('click', function () {
-    message.remove();
-  });
-
-//Styles
-message.style.backgroundColor = '#35383d';
-message.style.width = '120%';
-console.log(message.style.height);
-console.log(getComputedStyle(message).color);
-console.log(getComputedStyle(message).display);
-
-message.style.height =
-  Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
-
-document.documentElement.style.setProperty('--color-primary', 'red');
-
-//attributes
-const logo = document.querySelector('.nav__logo');
-console.log(logo.alt);
-console.log(logo.src);
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
